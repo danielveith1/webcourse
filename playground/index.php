@@ -1,11 +1,15 @@
 <ul>
 <?
-	$whatever = 0;
+function SomeFunction()
+{
+	global $name;
+	return $name;
+}
 
 		$name = "Dan";
 
 	for ($i=0; $i < 10; $i++): ?>
-		<li><?= "Hello " . $name?></li>
+		<li><?= "Hello " . SomeFunction()?></li>
 <?  endfor; ?>		
 	
 </ul>
