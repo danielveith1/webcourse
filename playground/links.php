@@ -10,8 +10,8 @@
 	</head>
 	<body>
 	<div>
-		<? include ('inc/header.php'); ?>
-		<? include ('nav.php'); ?>
+		<? require ('inc/header.php'); ?>
+		<? include ('inc/nav.php'); ?>
 			
 	</div>
 	</body>
