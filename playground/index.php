@@ -7,6 +7,7 @@
 	</head>
 
 <body>
+	
 	<div>
 		<? include ('inc/header.php'); ?>
 		<? include ('inc/nav.php'); ?>
@@ -16,7 +17,7 @@
 		$myarr = array("Hello", 'World');	
 			?>
 			<div>
-				<?=$myArr[0] ?> <?=$myArr[1] ?>
+				
 			</div>
 		
 		
