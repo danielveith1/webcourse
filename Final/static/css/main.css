@@ -1,0 +1,25 @@
+header {
+	min-height: 50px;
+	background-color: #006DCC;
+	color: #fff;
+}
+
+nav {
+	width: 75px;
+	min-height: 400px;
+	float:left;
+	background-color:#942A25;
+	color: #fff;
+	
+}
+div#content {
+	margin: 30px;
+	width: 70%;
+	float: left;
+}
+.error {
+	color: red;
+}
+input.error {
+	border-color: red;
+}
