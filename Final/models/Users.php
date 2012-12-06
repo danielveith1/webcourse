@@ -9,8 +9,14 @@ class Users
                 return $conn->query('SELECT * FROM Users');
         }
         
-        static function Get()
+        static function Get($id)
         {
+        	$conn = GetConnection();
+                $results = $conn->query("SELECT * FROM Users WHERE userNumber=$id");
+                $row = $results->fetch_assoc();
+                $conn->close();
+                return $row;
+			
         }
 
         static function Insert()
