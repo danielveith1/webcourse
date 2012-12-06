@@ -6,26 +6,11 @@ $results = Users::GetAll();
 
 <!DOCTYPE html>
 <html lang="en">
-        <head>
-                <meta charset="utf-8" />
-                <title>Index</title>
-                <link type="text/css" rel="stylesheet" href="../../static/css/bootstrap.min.css" />
-                <link type="text/css" rel="stylesheet" href="../../static/css/main.css" />
-        </head>
+        <? include('../../inc/head.php'); ?>
 
         <body>
                 <div>
-                        <header>
-                                <h1>Index</h1>
-                        </header>
-                        <nav>
-                                <p>
-                                        <a href="/">Home</a>
-                                </p>
-                                <p>
-                                        <a href="/contact">Contact</a>
-                                </p>
-                        </nav>
+                        <? include('../../inc/nav.php'); ?>
 
                         <div id="content">
                                 <table class="table table-bordered table-condensed table-hover table-striped">
@@ -47,12 +32,8 @@ $results = Users::GetAll();
                                 </table>
                                 
                         </div>
-
-                        <footer>
-                                <p>
-                                        &copy; Copyright  by New Paltz
-                                </p>
-                        </footer>
+						<? include('../../inc/footer.php'); ?>
+                        
                 </div>
         </body>
 </html>
