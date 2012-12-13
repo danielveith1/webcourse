@@ -19,15 +19,25 @@ class Users
 			
         }
 
-        static function Insert()
+        static function Insert($row)
         {
         }
         
-        static function Update()
+        static function Update($row)
         {
+        	$conn = GetConnection();
+			$sql = "UPDATE Users "
+				.	"Set firstName='$row[firstName]', lastName='$row[lastName]', createdAt='$row[createdAt]', updatedAt='$row[updatedAt]' "
+                        .	"WHERE userNumber=$row[userNumber] ";
+                //echo $sql;
+                $conn->query($sql);
+                $error = $conn->error;
+                $conn->close();
+                
+                return $error != '' ? array('Server Error' => $error) : true;
         }
         
-        static function Delete()
+        static function Delete($id)
         {
         }
 }

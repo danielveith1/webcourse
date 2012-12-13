@@ -22,8 +22,8 @@ $results = Users::GetAll();
                                                 <tr>
                                                         <td><?=$row['firstName']?></td> <td><?=$row['lastName']?> </td>
                                                         <td>
-                                                                <a href="#">Details</a>
-                                                                <a href="#">Edit</a>
+                                                                <a href="details.php?userNumber=<?=$row['userNumber']?>">Details</a>
+                                                                <a href="edit.php?userNumber=<?=$row['userNumber']?>">Edit</a>
                                                                 <a href="#">Delete</a>
                                                         </td>                                   
                                                 </tr>

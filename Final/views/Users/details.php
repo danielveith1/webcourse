@@ -1,6 +1,6 @@
 <?
 require_once ('../../models/Users.php');
-$row = Users::Get($_REQUEST['id']);
+$row = Users::Get($_REQUEST['userNumber']);
 ?>
 
 
@@ -11,22 +11,30 @@ $row = Users::Get($_REQUEST['id']);
                 <div>
                         <? include('../../inc/nav.php'); ?>
 
-                        <div id="content" class="form-horizontal">
-                                <br style="clear: both" />
-                                <div class="control-group">
-                                        <label class="control-label">First Name:</label>
-                                        <div class="controls"><?=$row['firstName']?></div>
-                                </div>
-                                
-                                <div class="control-group">
-                                        <label class="control-label">Last Name:</label>
-                                        <div class="controls"><?=$row['lastName']?></div>
-                                </div>
                         
-                                <div class="control-group">
-                                        <label class="control-label">created_at:</label>
-                                        <div class="controls"><?=$row['created_at']?></div>
-                                </div>
+                        <div id="content" class="dl-horizontal">
+                                                      
+                                 
+                                <dl>
+                                        <dt>First Name:</dt>
+                                        <dd><?=$row['firstName']?></dd>
+                                </dl>
+                                <dl>
+                                        <dt>Last Name:</dt>
+                                        <dd><?=$row['lastName']?></dd>
+                                </dl>
+                                <dl>
+                                        <dt>Created at:</dt>
+                                        <dd><?=$row['createdAt']?></dd>
+                                </dl>
+                                <dl>
+                                        <dt>Upated at:</dt>
+                                        <dd><?=$row['updatedAt']?></dd>
+                                </dl>
+                                <dl>
+                                        <dt>User Number:</dt>
+                                        <dd><?=$row['userNumber']?></dd>
+                                </dl>
                         
                         
                         </div>
