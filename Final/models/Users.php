@@ -26,10 +26,12 @@ class Users
         static function Update($row)
         {
         	$conn = GetConnection();
+			$row2 = EscapeRow($row, $conn);
 			$sql = "UPDATE Users "
-				.	"Set firstName='$row[firstName]', lastName='$row[lastName]', createdAt='$row[createdAt]', updatedAt='$row[updatedAt]' "
-                        .	"WHERE userNumber=$row[userNumber] ";
-                //echo $sql;
+				.	"Set firstName='$row2[firstName]', lastName='$row2[lastName]', createdAt='$row2[createdAt]', updatedAt='$row2[updatedAt]', userNumber='$row2[userNumber]' "
+                        
+                .	"WHERE userNumber=$row[userNumber] ";
+                echo $sql;
                 $conn->query($sql);
                 $error = $conn->error;
                 $conn->close();
@@ -40,4 +42,16 @@ class Users
         static function Delete($id)
         {
         }
+		
+		static function Validate($row)
+        {
+                $results = array();
+                if(!is_numeric($row['userNumber'])) $results['userNumber'] = 'userNumber needs to be a number';
+                if(empty($row['userNumber'])) $results['userNumber'] = 'userNumber is required';
+                if(empty($row['firstName'])) $results['firstName'] = 'FirstName is required';
+                if(empty($row['lastName'])) $results['lastName'] = 'LastName is required';
+               
+                return count($results) > 0 ? $results : true;
+        }
+		
 }
