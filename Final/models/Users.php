@@ -6,7 +6,8 @@ class Users
         static function GetAll()
         {
                 $conn = GetConnection();
-                return $conn->query('SELECT * FROM Users U Join UserTypes K ON U.userTypeNumber_FK=K.userTypeNumber');
+                //return $conn->query('SELECT * FROM Users U Join UserTypes K ON U.userTypeNumber_FK=K.userTypeNumber');
+				return $conn->query('SELECT U.*, K.typeName FROM Users U Join UserTypes K ON U.userTypeNumber_FK=K.userTypeNumber');
         }
         
         static function Get($id)
@@ -87,7 +88,7 @@ class Users
         {
                 $conn = GetConnection();
                 $sql =  "DELETE FROM Users WHERE userNumber=$id ";
-                echo $sql;
+                //echo $sql;
                 $conn->query($sql);
                 $error = $conn->error;
                 $conn->close();
