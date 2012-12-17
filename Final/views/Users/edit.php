@@ -29,8 +29,9 @@ else{
 	else {
 			$row = Users::Blank();
 	}
-	$types = UserTypes::GetAll();
+	
 }
+$types = UserTypes::GetAll();
 
 ?>
 
@@ -99,7 +100,7 @@ else{
                                 <form class="form-horizontal" action="edit.php" method="post">
                                 	
                                         <input type="hidden" name="userNumber" value="<?=$row['userNumber']?>" />
-                                        <input type="hidden" name="userTypeNumber_FK" value="<?=$row['userTypeNumber_FK']?>" />
+                                        
                                         <? function RenderInput($propertyName, $inputtype){ ?>
                                                 <? global $row, $response; ?>
                                                 <div class="control-group">
@@ -123,7 +124,7 @@ else{
 												RenderInput('state', 'text');
 												RenderInput('zipcode', 'text');
 												RenderInput('country', 'text');
-                                                //RenderInput('userTypeNumber_FK', 'number')
+                                                
                                         ?>
                                        
                                         <div class="control-group">
@@ -132,7 +133,7 @@ else{
                                                  <select name="userTypeNumber_FK" id="userTypeNumber_FK"
                                                                                         class="<?=isset($response['userTypeNumber_FK']) ? 'error' : '' ?>"
                                                                         >
-                                                                                <? while ($krow = $keywords->fetch_assoc()): ?>                                                                        
+                                                                                <? while ($krow = $types->fetch_assoc()): ?>                                                                        
                                                                                         <option
                                                                                                 value="<?=$krow['userTypeNumber']?>"
                                                                                                 <? if($row['userTypeNumber_FK'] == $krow['userTypeNumber']): ?>selected="selected"<? endif; ?>
@@ -181,3 +182,4 @@ else{
                 </script>
         </body>
 </html>
+<? endif; //if($_REQUEST['ajax']):  ?>

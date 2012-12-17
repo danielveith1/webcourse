@@ -6,6 +6,6 @@ class UserTypes
         static function GetAll()
         {
                 $conn = GetConnection();
-                return $conn->query('SELECT * FROM UserTypes WHERE userTypeNumber=2');
+                return $conn->query('SELECT * FROM UserTypes');
         }
 }
