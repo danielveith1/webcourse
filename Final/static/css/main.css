@@ -1,14 +1,14 @@
 header {
-	min-height: 50px;
-	background-color: #006DCC;
+	min-height: 45px;
+	background-color: #99CC99;
 	color: #fff;
 }
 
 nav {
 	width: 75px;
-	min-height: 400px;
+	min-height: 410px;
 	float:left;
-	background-color:#942A25;
+	background-color:#665566;
 	color: #fff;
 	
 }

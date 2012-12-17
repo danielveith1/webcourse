@@ -14,6 +14,7 @@ function EscapeRow($row, $conn)
         $row2 = array();
         foreach ($row as $key => $value) {
                 $row2[$key] = $conn->real_escape_string($value);
+				echo "loop";
         }
         return $row2;
 }

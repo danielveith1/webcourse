@@ -1,6 +1,6 @@
 <?
 require_once ('../../models/Users.php');
-$row = Users::Get($_REQUEST['userNumber']);
+$row = Users::Get($_REQUEST['id']);
 ?>
 
 
