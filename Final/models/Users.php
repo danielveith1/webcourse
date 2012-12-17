@@ -6,7 +6,7 @@ class Users
         static function GetAll()
         {
                 $conn = GetConnection();
-                return $conn->query('SELECT * FROM Users');
+                return $conn->query('SELECT * FROM Users U Join UserTypes K ON U.userTypeNumber_FK=K.userTypeNumber');
         }
         
         static function Get($id)
@@ -31,12 +31,7 @@ class Users
 		 }
 		 static function Blank()
         {
-        	//$conn = GetConnection();
-		 	//$SQL = "SELECT MAX(userNumber) from Users";
-			//$result = mysqli_query($conn, $SQL);
-			//if (!$result)
-    			//die("<p>Unable to execute the query.</p>");
-			//$row = mysqli_fetch_row($result);
+        	
 				echo "blank called";
         		return array('userNumber'=>null,'firstName'=>null,'lastName'=>null,'addressLine1'=>null,'addressLine2'=>null,'city'=>null,'state'=>null,'zipcode'=>null,'country'=>null,'createdAt'=>null,
                 'updatedAt'=>null,'userTypeNumber_FK'=>2,);
@@ -88,9 +83,18 @@ class Users
                 return $error != '' ? array('Server Error' => $error) : true;
         }
         
-        static function Delete()
+        static function Delete($id)
         {
+                $conn = GetConnection();
+                $sql =  "DELETE FROM Users WHERE userNumber=$id ";
+                echo $sql;
+                $conn->query($sql);
+                $error = $conn->error;
+                $conn->close();
+               
+                return $error != '' ? array('Server Error' => $error) : true;          
         }
+
 		
 		static function Validate($row)
         {
