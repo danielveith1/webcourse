@@ -27,6 +27,7 @@ $results = Users::GetAll();
                                             A user has been successfuly added.
                                     </div>
                                 <? endif; ?>
+                                
                                 <a href="edit.php">+ Create New</a>
                                
                                 <table class="table table-bordered table-condensed table-hover table-striped">
