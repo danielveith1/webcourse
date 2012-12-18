@@ -1,44 +1,21 @@
+
 <?
-require_once ('../../models/Accounts.php');
-require_once ('../../models/Users.php');
-require_once ('../../models/UserTypes.php');
-RequireLogin();
+require_once ('../../models/Logins.php');
+//RequireLogin();
 
 
-if(isset($_POST['userNumber']))
+if(isset($_POST['email']))
 {
-       
-       
         $row = $_POST;
-        $response = Users::Validate($row);
-               
-        if($response === true){
-                echo $row['userNumber'];  
-                if($row['userNumber']==null){
-                        $response = Users::Insert($row);
-                                echo "inserting";
-                                }                
-                else                            
-                $response = Users::Update($row);
-        if($response === true)
-                header("Location: index.php?inserted=$row[userNumber]");
-}
+		
+        if(Logins::CheckPassword($row) == TRUE) {
+        	echo "yay you logged in";
+        }
+		else {
+			echo "wrong email or password... boo.";
+		}
 }
 else{
-        if(isset($_GET['id'])){
-                $row = Users::Get($_REQUEST['id']);
-       
-        }
-        else {
-                        $row = Users::Blank();
-                if($row['userNumber']==null)
-                echo "id is null";
-        }
-}
-
-
-
-
 ?>
 
 
@@ -70,8 +47,7 @@ else{
                                
                                 <form class="form-horizontal" action="" method="post">
                                        
-                                        <input type="hidden" name="userNumber" value="<?=$row['userNumber']?>" />
-                                        <input type="hidden" name="userTypeNumber_FK" value="<?=$row['userTypeNumber_FK']?>" />
+                                       
                                         <? function RenderInput($propertyName, $inputtype){ ?>
                                                 <? global $row, $response; ?>
                                                 <div class="control-group">
@@ -87,14 +63,8 @@ else{
                                                 </div>
                                         <? } ?>
                                         <?
-                                                RenderInput('firstName', 'text');
-                                                RenderInput('lastName', 'text');
-                                                                                                RenderInput('addressLine1', 'text');
-                                                                                                RenderInput('addressLine2', 'text');
-                                                                                                RenderInput('city', 'text');
-                                                                                                RenderInput('state', 'text');
-                                                                                                RenderInput('zipcode', 'text');
-                                                                                                RenderInput('country', 'text');
+                                                RenderInput('email', 'text');
+												RenderInput('password', 'text');
                                                 //RenderInput('userTypeNumber_FK', 'number')
                                         ?>
                                        
@@ -109,18 +79,8 @@ else{
                         </div>
                         <? include('../../inc/footer.php'); ?>
                 </div>
-                <script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.10.0/jquery.validate.min.js"></script>
-                <script type="text/javascript">
-                        $(function(){
-                               
-                                $("form").validate(
-                                        {
-                                                rules: { created_at: { required: true} }
-                                        }
-                                );
-                               
-                                $("input[type='datetime']").datepicker();
-                        });
-                </script>
+                
+                
         </body>
 </html>
+<? } ?>
