@@ -25,4 +25,11 @@ class Logins{
 	static function logOut(){
 		$_SESSION['loggedIn'] = FALSE;
 	}
+	static function logOutButton(){ ?>
+		<form>
+<INPUT TYPE=BUTTON OnClick="<?php logOut(); ?>" VALUE="Log Out">
+</form>
+<?
+	}
 }
+?>
