@@ -81,19 +81,14 @@ $types = UserTypes::GetAll();
                         <div id="content">
                                
                                 <? if(isset($response)): ?>
-                                       <? 
-                                       /* 
-									    * this is html code commented out inside php tags
-								        * it generates error codes above the form.
+                                       
                                        <dl class="dl-horizontal error">
                                                 <? foreach ($response as $key => $value) { ?>
                                                         <dt><?=$key?></dt>
                                                         <dd><?=$value?></dd>
                                               <? } ?>
 									    </dl>
-									    
-									    * */               
-                                                        ?>
+									   
                                         <? endif; ?>                                           
                                         
                                 

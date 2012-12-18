@@ -35,7 +35,7 @@ $results = Users::GetAll();
 
                                                         <td>
                                                                  <a href="details.php?id=<?=$row['userNumber']?>">Details</a>
-                                                                <a href="edit.php?id=<?=$row['userNumber']?>">Edit</a>
+                                                                <a href="edit.php?id=<?=$row['userNumber']?>" class="edit-link">Edit</a>
                                                                 <a href="delete.php?id=<?=$row['userNumber']?>" class="delete-link">Delete</a>
 
                                                         </td>                                  
@@ -44,7 +44,10 @@ $results = Users::GetAll();
 
                                         
                                 </table>
-                                
+                              <div id="edit-form">
+                                        <? $_REQUEST['ajax']='dd'; include('edit.php'); ?>                              
+                                </div>
+  
                         </div>
 						<? include('../../inc/footer.php'); ?>
                         
@@ -72,7 +75,19 @@ $results = Users::GetAll();
                                         });
                                         return false;
                                 });
+                                $(".edit-link").click(function(){
+                                        var $tr = $(this).closest("tr").hide();
+                                        $.get(this.href + '&ajax', function(data){
+                                                $tr = $tr.after('<tr><td colspan="4"></td></tr>').next();
+                                                $tr = $tr.find('td');
+                                                $tr.html(data);
+                                                //$("#edit-form").html($(data));
+                                        });
+                                        return false;
+                                });
+
                         });
+                       
                 </script>
 
 

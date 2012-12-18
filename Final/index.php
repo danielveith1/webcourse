@@ -3,9 +3,17 @@ require_once ('models/Users.php');
 $results = Users::GetAll();
 require_once ('inc/functions.php');
 $testConn = GetConnection();
+/*
+ * if(admin){
+ * build admin options
+ * }
+ * else{
+ * build customer options
+ * }
+ * 
+ */
+
 ?>
-
-
 <!DOCTYPE html>
 <html lang="en">
        <? include('inc/head.php'); ?>
