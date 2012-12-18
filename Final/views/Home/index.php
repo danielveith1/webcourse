@@ -1,6 +1,7 @@
 
 <?
 require_once ('../../models/Logins.php');
+require_once ('../../models/Accounts.php');
 //RequireLogin();
 
 
@@ -9,13 +10,13 @@ if(isset($_POST['email']))
         $row = $_POST;
 		
         if(Logins::CheckPassword($row) == TRUE) {
-        	echo "yay you logged in";
+        	header("Location: $rootUrl/views/Users/index.php");
         }
 		else {
 			echo "wrong email or password... boo.";
 		}
 }
-else{
+
 ?>
 
 
@@ -28,23 +29,8 @@ else{
 
                         <div id="content">
                                
-                                <? if(isset($response)): ?>
-                                       <?
-                                       /*
-                                                                            * this is html code commented out inside php tags
-                                                                        * it generates error codes above the form.
-                                       <dl class="dl-horizontal error">
-                                                <? foreach ($response as $key => $value) { ?>
-                                                        <dt><?=$key?></dt>
-                                                        <dd><?=$value?></dd>
-                                              <? } ?>
-                                                                            </dl>
-                                                                           
-                                                                            * */              
-                                                        ?>
-                                        <? endif; ?>                                          
                                        
-                               
+                        <? if(IsLoggedIn()) { ?>
                                 <form class="form-horizontal" action="" method="post">
                                        
                                        
@@ -70,12 +56,12 @@ else{
                                        
                                         <div class="control-group">
                                                 <div class="controls">
-                                                        <input type="submit" value="Save" class="btn btn-primary" />
+                                                        <input type="submit" value="Log In" class="btn btn-primary" />
                                                 </div>
                                         </div>
                        
                                 </form>
-
+							<? } ?>
                         </div>
                         <? include('../../inc/footer.php'); ?>
                 </div>
@@ -83,4 +69,3 @@ else{
                 
         </body>
 </html>
-<? } ?>

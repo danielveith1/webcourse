@@ -1,6 +1,10 @@
 <?
 require_once ('../../models/Users.php');
+require_once ('../../models/Logins.php');
+require_once ('../../models/Accounts.php');
+RequireLogin();
 $results = Users::GetAll();
+
 ?>
 
 

@@ -11,21 +11,18 @@ class Logins{
                 $result2 = $conn->query("SELECT password FROM Users WHERE userNumber=$row1[userNumber_FK]");
 				$row2 = $result2->fetch_assoc();
 				$conn->close();
-				if($input['password'] == $row2['password'])
-				return TRUE;
+				if($input['password'] == $row2['password']){
+					$_SESSION['userNumber'] = $row1['userNumber_FK'];
+					$_SESSION['loggedIn'] = TRUE;
+					return TRUE;
+				}
 				else {
+					$_SESSION['loggedIn'] = FALSE;
 					return FALSE;
 				}
                 
 	}
-
-	static function Validate($row)
-        {
-        	echo "validate called";
-                $results = array();
-                if(empty($row['email'])) $results['email'] = 'email is required';
-                if(empty($row['password'])) $results['password'] = 'password is required';
-               
-                return count($results) > 0 ? $results : true;
-        }		
+	static function logOut(){
+		$_SESSION['loggedIn'] = FALSE;
 	}
+}
